@@ -1,0 +1,1122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Technovanza 11.0 | Experience the Future</title>
+
+  <!-- Modern Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Syne:wght@400;600;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    :root {
+      --primary: #00e0ff;
+      --secondary: #FF3366;
+      --tertiary: #9D4EDD;
+      --accent: #FFD700;
+      --dark-bg: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      --nav-bg: rgba(15,32,39,0.9);
+      --footer-bg: rgba(15,32,39,0.95);
+      --glass: rgba(32,58,67,0.90);
+      --glass-strong: rgba(32,58,67,0.90);
+      --blur: 20px;
+      --radius: 25px;
+      --shadow: 0 25px 50px -12px rgba(0,0,0,0.25);
+      --shadow-hover: 0 35px 70px -12px rgba(0,224,255,0.3);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html { 
+      scroll-behavior: smooth; 
+      scroll-padding-top: 100px;
+    }
+
+    body {
+      font-family: 'Space Grotesk', sans-serif;
+      background: var(--dark-bg);
+      color: #FFFFFF;
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Loading Screen */
+    .loading-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #0f2027, #203a43);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 10000;
+      transition: opacity 1s ease, visibility 1s ease;
+    }
+
+    .loading-screen.hidden {
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    .loading-logo {
+      width: 120px;
+      height: 120px;
+      border: 3px solid rgba(0, 224, 255, 0.3);
+      border-top: 3px solid var(--primary);
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    /* Particle Background */
+    .particles-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      overflow: hidden;
+    }
+
+    .particle {
+      position: absolute;
+      background: var(--primary);
+      border-radius: 50%;
+      opacity: 0.6;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .particle.secondary { background: var(--secondary); }
+    .particle.tertiary { background: var(--tertiary); }
+
+    @keyframes float {
+      0%, 100% { 
+        transform: translateY(0px) rotate(0deg); 
+        opacity: 0.6;
+      }
+      50% { 
+        transform: translateY(-20px) rotate(180deg); 
+        opacity: 0.9;
+      }
+    }
+
+    /* Dynamic Background */
+    .dynamic-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -2;
+      background: 
+        radial-gradient(circle at 20% 80%, rgba(255, 51, 102, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(0, 224, 255, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 40% 40%, rgba(157, 78, 221, 0.1) 0%, transparent 50%),
+        linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    }
+
+    /* Magnetic Mouse Effect */
+    .mouse-follower {
+      position: fixed;
+      width: 20px;
+      height: 20px;
+      background: radial-gradient(circle, var(--primary), transparent);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9999;
+      transition: transform 0.1s ease;
+      mix-blend-mode: difference;
+    }
+
+    /* Enhanced Animations */
+    @keyframes neon-pulse {
+      0%, 100% { 
+        box-shadow: 0 0 20px rgba(0,224,255,0.5), inset 0 0 20px rgba(0,224,255,0.1);
+      }
+      50% { 
+        box-shadow: 0 0 40px rgba(0,224,255,0.8), inset 0 0 30px rgba(0,224,255,0.2);
+      }
+    }
+
+    @keyframes gradient-shift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    @keyframes typewriter {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+
+    @keyframes blink-caret {
+      from, to { border-color: transparent; }
+      50% { border-color: var(--primary); }
+    }
+
+    .typewriter {
+      overflow: hidden;
+      border-right: none !important;
+      animation: typewriter 3s steps(40, end);
+      white-space: nowrap;
+      margin: 0 auto;
+      letter-spacing: 0.1em;
+    }
+
+    /* Glass Morphism Enhanced */
+    .glass-card {
+      background: var(--glass);
+      backdrop-filter: blur(var(--blur));
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: clamp(1.5rem, 4vw, 2.5rem); /* Responsive padding */
+      border: 1px solid rgba(255,255,255,0.1);
+      position: relative;
+      overflow: hidden;
+      transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    .glass-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+      transition: left 0.5s ease;
+    }
+
+    .glass-card:hover::before {
+      left: 100%;
+    }
+
+    .glass-card:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: var(--shadow-hover);
+      border-color: rgba(0,224,255,0.3);
+    }
+
+    /* Header Enhanced */
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 50px;
+      background: var(--nav-bg);
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      backdrop-filter: blur(15px);
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      transition: all 0.3s ease;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+    }
+
+    .logo img {
+      height: 55px;
+      filter: drop-shadow(0 0 10px rgba(0,224,255,0.5));
+    }
+
+    .logo h2 {
+      margin-left: 15px;
+      background: linear-gradient(45deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    nav {
+        display: flex;
+        align-items: center;
+    }
+    nav a {
+      margin: 0 15px;
+      text-decoration: none;
+      color: #FFF;
+      font-weight: 600;
+      font-family: 'Syne', sans-serif;
+      padding: 12px 20px;
+      border-radius: 25px;
+      transition: all 0.3s ease;
+    }
+
+    nav a:hover {
+      color: var(--primary);
+      background: rgba(0, 224, 255, 0.1);
+    }
+
+    /* Hero Section Enhanced */
+    .hero {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      text-align: center;
+      padding: clamp(100px, 15vw, 200px) 20px; /* Adjusted responsive padding for top clearance */
+      position: relative;
+    }
+
+    .hero-content {
+      max-width: 800px;
+      z-index: 2;
+    
+    }
+
+    .hero-logo {
+      width: 250px;
+      margin-bottom: 30px;
+      filter: drop-shadow(0 0 30px rgba(0,224,255,0.6));
+      animation: neon-pulse 3s ease-in-out infinite;
+      transition: transform 0.3s ease-in-out;
+      max-width: 90%; 
+      height: auto;
+      display: block;
+      margin: 20px auto; 
+      border-radius: 15px;
+    }
+
+    .hero-logo:hover {
+        transform: scale(1.05);
+    }
+
+    .hero h1 {
+      font-size: clamp(2rem, 3vw, 4rem);
+      margin-bottom: 20px;
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      background: linear-gradient(45deg, var(--primary), var(--secondary), var(--tertiary));
+      background-size: 300% 300%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: gradient-shift 3s ease infinite;
+    }
+
+    .hero p {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 400;
+      letter-spacing: 0.02em;
+      margin-bottom: 40px;
+      line-height: 1.6;
+      opacity: 0.9;
+      font-size: 1.1rem;
+      margin-bottom: 2.5rem;
+      color: rgba(255,255,255,0.9);
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 1.5rem;
+      justify-content: center;
+      margin-top: 2rem;
+      
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 1;
+    }
+
+    /* Countdown Timer */
+    .countdown {
+      display: flex;
+      justify-content: center;
+      gap: clamp(10px, 3vw, 30px); /* Responsive gap */
+      margin: 40px 0;
+      flex-wrap: wrap;
+    }
+
+    .countdown-item {
+      background: var(--glass-strong);
+      backdrop-filter: blur(var(--blur));
+      padding: clamp(10px, 3vw, 20px); /* Responsive padding */
+      border-radius: 15px;
+      border: 1px solid rgba(255,255,255,0.1);
+      min-width: 100px;
+      text-align: center;
+    }
+
+    .countdown-number {
+      font-size: clamp(1.8rem, 5vw, 2.5rem); /* Responsive font size */
+      font-weight: 700;
+      color: var(--primary);
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .countdown-label {
+      font-size: clamp(0.8rem, 2vw, 0.9rem); /* Responsive font size */
+      opacity: 0.8;
+      margin-top: 5px;
+    }
+
+    /* Enhanced Buttons */
+    .btn {
+      padding: 18px 45px;
+      border: none;
+      border-radius: 50px;
+      background: linear-gradient(45deg, var(--primary), var(--secondary));
+      background-size: 300% 300%;
+      font-weight: 700;
+      font-size: 1.1rem;
+      cursor: pointer;
+      color: white;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+      animation: gradient-shift 3s ease infinite;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(45deg, rgba(255,255,255,0.1), transparent);
+      transition: left 0.5s ease;
+    }
+
+    .btn:hover::before {
+      left: 100%;
+    }
+
+    .btn:hover {
+      transform: translateY(-5px) scale(1.05);
+      box-shadow: 0 20px 40px rgba(0,224,255,0.4);
+    }
+
+    /* Sections */
+    section {
+      padding: 120px 20px;
+      text-align: center;
+      position: relative;
+    }
+
+    section h2 {
+      font-size: clamp(2rem, 6vw, 3.5rem);
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      margin-bottom: 60px;
+      background: linear-gradient(45deg, var(--primary), var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* Enhanced Grid */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 40px;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Flip Cards Enhanced */
+    .flip-card {
+      perspective: 1000px;
+      cursor: pointer;
+      height: 450px;
+    }
+
+    .flip-card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+      transform-style: preserve-3d;
+    }
+
+    .flip-card.flip .flip-card-inner {
+      transform: rotateY(180deg);
+    }
+
+    .flip-front, .flip-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: var(--radius);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 2.5rem;
+      box-sizing: border-box;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .flip-front {
+      background: var(--glass);
+      backdrop-filter: blur(var(--blur));
+      box-shadow: var(--shadow);
+    }
+
+    .flip-back {
+      background: var(--glass-strong);
+      backdrop-filter: blur(var(--blur));
+      transform: rotateY(180deg);
+      box-shadow: var(--shadow);
+    }
+
+    .flip-front h3 {
+      font-size: 2.2rem;
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 25px;
+      text-shadow: 0 0 20px rgba(0,224,255,0.3);
+    }
+
+    .flip-front .incharge {
+      font-size: 1.3rem;
+      color: #fff;
+      margin-top: 20px;
+      opacity: 0.9;
+    }
+
+    .flip-back h3 {
+      font-size: 2rem;
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 25px;
+    }
+
+    .flip-back .venue {
+      font-size: 1.2rem;
+      color: var(--accent);
+      margin-bottom: 20px;
+      font-weight: 600;
+    }
+
+    .flip-back .description {
+      font-size: 1.1rem;
+      color: #eef;
+      text-align: center;
+      line-height: 1.7;
+    }
+    
+    /* Enhanced Testimonials */
+    .testimonial-card {
+      font-style: italic;
+      color: #cfe9ff;
+      position: relative;
+      padding-top: 30px;
+    }
+
+    .testimonial-card::before {
+      content: '"';
+      position: absolute;
+      top: -10px;
+      left: 20px;
+      font-size: 4rem;
+      color: var(--primary);
+      opacity: 0.3;
+    }
+
+    .testimonial-author {
+      margin-top: 20px;
+      font-weight: bold;
+      color: var(--accent);
+      font-style: normal;
+    }
+
+    /* Scroll Animations */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .fade-in {
+      opacity: 0;
+      transition: opacity 1s ease-out;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+    }
+
+    .scale-in {
+      opacity: 0;
+      transform: scale(0.8);
+      transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    .scale-in.visible {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    /* Enhanced Footer */
+    footer {
+      text-align: center;
+      padding: 60px 20px;
+      background: var(--footer-bg);
+      backdrop-filter: blur(15px);
+      margin-top: 80px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+
+    footer img {
+      height: 60px;
+      margin-bottom: 20px;
+      filter: drop-shadow(0 0 15px rgba(0,224,255,0.4));
+    }
+
+    footer .logo {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .social-links {
+      margin-top: 30px;
+    }
+
+    .social-links a {
+      color: white;
+      margin: 0 15px;
+      font-size: 1.5rem;
+      transition: all 0.3s ease;
+      display: inline-block;
+    }
+
+    .social-links a:hover {
+      color: var(--primary);
+      transform: translateY(-3px) scale(1.2);
+      text-shadow: 0 0 15px rgba(0,224,255,0.6);
+    }
+
+    /* Mobile Menu */
+    .hamburger-menu {
+        display: none;
+        font-size: 1.5rem;
+        cursor: pointer;
+    }
+
+    .mobile-menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 100%;
+        height: 100%;
+        background: rgba(15,32,39,0.95);
+        backdrop-filter: blur(15px);
+        z-index: 1001;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transition: right 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    .mobile-menu.active {
+        right: 0;
+    }
+
+    .mobile-menu a {
+        font-size: 2rem;
+        margin: 20px 0;
+        padding: 15px 40px;
+        color: white;
+        text-decoration: none;
+        border-bottom: 2px solid rgba(255,255,255,0.1);
+        transition: color 0.3s ease;
+    }
+
+    .mobile-menu a:hover {
+        color: var(--primary);
+    }
+
+    .close-btn {
+        position: absolute;
+        top: 30px;
+        right: 30px;
+        font-size: 2rem;
+        cursor: pointer;
+        color: white;
+        transition: transform 0.3s ease;
+    }
+
+    .close-btn:hover {
+        transform: rotate(90deg);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      header {
+        padding: 15px 20px;
+      }
+      nav {
+        display: none; /* Hide desktop nav on mobile */
+      }
+      .hamburger-menu {
+          display: block; /* Show hamburger on mobile */
+      }
+      .countdown {
+        gap: 15px;
+      }
+      .countdown-item {
+        padding: 15px;
+        min-width: 80px;
+      }
+      .countdown-number {
+        font-size: 1.8rem;
+      }
+      .card-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+      section {
+        padding: 80px 15px;
+      }
+      .hero-logo {
+        max-width: 90%;
+        height: auto;
+        margin: 20px auto;
+        display: block;
+      }
+
+      .hero-content h1 {
+        font-size: 1.8rem;
+        text-align: center;
+      }
+
+      .hero-content p {
+        font-size: 1rem;
+        line-height: 1.5;
+        text-align: center;
+      }
+      .hero-buttons {
+        flex-direction: column;
+        gap: 1rem;
+      }
+    }
+
+    /* Stagger animations */
+    .card-grid > *:nth-child(1) { transition-delay: 0.1s; }
+    .card-grid > *:nth-child(2) { transition-delay: 0.2s; }
+    .card-grid > *:nth-child(3) { transition-delay: 0.3s; }
+    .card-grid > *:nth-child(4) { transition-delay: 0.4s; }
+    .card-grid > *:nth-child(5) { transition-delay: 0.5s; }
+    .card-grid > *:nth-child(6) { transition-delay: 0.6s; }
+  </style>
+</head>
+<body>
+
+  <!-- Loading Screen -->
+  <div class="loading-screen" id="loadingScreen">
+    <div class="loading-logo"></div>
+  </div>
+
+  <!-- Mouse Follower -->
+  <div class="mouse-follower" id="mouseFollower"></div>
+
+  <!-- Dynamic Background -->
+  <div class="dynamic-bg"></div>
+
+  <!-- Particles Container -->
+  <div class="particles-container" id="particlesContainer"></div>
+
+  <!-- Header -->
+  <header class="fade-in">
+    <div class="logo">
+      <img src="logo.png" alt="Technovanza Logo">
+      <h2>TECHNOVANZA 11.0</h2>
+    </div>
+    <nav id="desktop-nav">
+      <a href="#hero">Home</a>
+      <a href="#events">Events</a>
+      <a href="#testimonials">Reviews</a>
+    </nav>
+    <!-- Hamburger menu icon for mobile -->
+    <div class="hamburger-menu" id="hamburgerMenu">
+        <i class="fas fa-bars"></i>
+    </div>
+  </header>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+      <div class="close-btn" id="closeBtn"><i class="fas fa-times"></i></div>
+      <a href="#hero">Home</a>
+      <a href="#events">Events</a>
+      <a href="#testimonials">Reviews</a>
+  </div>
+
+  <!-- Hero -->
+  <section class="hero" id="hero">
+    <div class="hero-content">
+      <div class="glass-card scale-in">
+        <img src="logo.png" alt="Technovanza Logo" class="hero-logo">
+        <h1 class="typewriter">Technovanza 11.0</h1>
+        <p>Experience innovation, creativity, and technology like never before. Join us this October for an unforgettable celebration of ideas and talent.</p>
+
+        <!-- Countdown Timer -->
+        <div class="countdown">
+          <div class="countdown-item">
+            <div class="countdown-number" id="days">--</div>
+            <div class="countdown-label">Days</div>
+          </div>
+          <div class="countdown-item">
+            <div class="countdown-number" id="hours">--</div>
+            <div class="countdown-label">Hours</div>
+          </div>
+          <div class="countdown-item">
+            <div class="countdown-number" id="minutes">--</div>
+            <div class="countdown-label">Minutes</div>
+          </div>
+          <div class="countdown-item">
+            <div class="countdown-number" id="seconds">--</div>
+            <div class="countdown-label">Seconds</div>
+          </div>
+        </div>
+        <div class="hero-buttons">
+          <a href="#events" class="btn">Explore Events</a>
+          <a href="#register" class="btn">Register Now</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Events -->
+  <section id="events">
+    <h2 class="fade-up">Featured Events</h2>
+    <div class="card-grid">
+
+      <div class="flip-card fade-up">
+        <div class="flip-card-inner">
+          <div class="flip-front">
+            <i class="fas fa-code" style="font-size: 3rem; color: var(--primary); margin-bottom: 20px;"></i>
+            <h3>Hackathon</h3>
+            <div class="incharge">Incharge: </div>
+          </div>
+          <div class="flip-back">
+            <h3>Hackathon</h3>
+            <div class="venue"><i class="fas fa-map-marker-alt"></i> Lab Complex</div>
+            <div class="description">24 hours of coding, innovation, and problem-solving with top young developers. Build the future with cutting-edge technologies and win amazing prizes!</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="flip-card fade-up">
+        <div class="flip-card-inner">
+          <div class="flip-front">
+            <i class="fas fa-robot" style="font-size: 3rem; color: var(--secondary); margin-bottom: 20px;"></i>
+            <h3>RoboWars</h3>
+            <div class="incharge">Incharge: </div>
+          </div>
+          <div class="flip-back">
+            <h3>RoboWars</h3>
+            <div class="venue"><i class="fas fa-map-marker-alt"></i> Mechanical Grounds</div>
+            <div class="description">Witness powerful bots clash in an epic showdown of strength and innovation. Design, build, and battle your way to victory in the ultimate robotics competition!</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="flip-card fade-up">
+        <div class="flip-card-inner">
+          <div class="flip-front">
+            <i class="fas fa-brain" style="font-size: 3rem; color: var(--tertiary); margin-bottom: 20px;"></i>
+            <h3>Ideathon</h3>
+            <div class="incharge">Incharge: </div>
+          </div>
+          <div class="flip-back">
+            <h3>Ideathon</h3>
+            <div class="venue"><i class="fas fa-map-marker-alt"></i> Auditorium</div>
+            <div class="description">Pitch your game-changing ideas to a panel of experts. This is your chance to turn your vision into reality and get recognized for your creativity.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="flip-card fade-up">
+        <div class="flip-card-inner">
+          <div class="flip-front">
+            <i class="fas fa-lightbulb" style="font-size: 3rem; color: var(--accent); margin-bottom: 20px;"></i>
+            <h3>Innovate</h3>
+            <div class="incharge">Incharge: </div>
+          </div>
+          <div class="flip-back">
+            <h3>Innovate</h3>
+            <div class="venue"><i class="fas fa-map-marker-alt"></i> Main Hall</div>
+            <div class="description">A showcase of groundbreaking projects and prototypes. Explore the future of technology and interact with the inventors shaping tomorrow.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="flip-card fade-up">
+        <div class="flip-card-inner">
+          <div class="flip-front">
+            <i class="fas fa-gamepad" style="font-size: 3rem; color: var(--primary); margin-bottom: 20px;"></i>
+            <h3>Gaming Arena</h3>
+            <div class="incharge">Incharge: </div>
+          </div>
+          <div class="flip-back">
+            <h3>Gaming Arena</h3>
+            <div class="venue"><i class="fas fa-map-marker-alt"></i> Canteen Area</div>
+            <div class="description">Compete in high-stakes esports tournaments and casual gaming sessions. Show off your skills and become the ultimate champion.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="flip-card fade-up">
+        <div class="flip-card-inner">
+          <div class="flip-front">
+            <i class="fas fa-microscope" style="font-size: 3rem; color: var(--secondary); margin-bottom: 20px;"></i>
+            <h3>Sci-Fi Expo</h3>
+            <div class="incharge">Incharge: </div>
+          </div>
+          <div class="flip-back">
+            <h3>Sci-Fi Expo</h3>
+            <div class="venue"><i class="fas fa-map-marker-alt"></i> Library Courtyard</div>
+            <div class="description">Step into a world of imagination with our science fiction exhibition. Discover stunning art, futuristic gadgets, and fan-favorite universes.</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section id="testimonials">
+    <h2 class="fade-up">What people are saying</h2>
+    <div class="card-grid">
+      <div class="glass-card testimonial-card fade-up">
+        <p>"An incredible display of talent and innovation. Technovanza always manages to surprise and inspire. The events were well-organized and the atmosphere was electric!"</p>
+        <div class="testimonial-author">- Alex Johnson, Class of '22</div>
+      </div>
+      <div class="glass-card testimonial-card fade-up">
+        <p>"From the thrilling RoboWars to the insightful Ideathon, every event was top-notch. It's a must-attend for anyone passionate about technology and the future."</p>
+        <div class="testimonial-author">- Jamie Lee, Tech Enthusiast</div>
+      </div>
+      <div class="glass-card testimonial-card fade-up">
+        <p>"The level of creativity was mind-blowing! I learned so much and met so many amazing people. Can't wait for the next one!"</p>
+        <div class="testimonial-author">- Chris Miller, Aspiring Developer</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="logo">
+      <img src="logo.png" alt="Technovanza Logo">
+    </div>
+    <p>&copy; 2025 Technovanza 11.0. All Rights Reserved.</p>
+    <div class="social-links">
+      <a href="#"><i class="fab fa-facebook-f"></i></a>
+      <a href="#"><i class="fab fa-twitter"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-linkedin-in"></i></a>
+    </div>
+  </footer>
+
+  <script>
+    // Constants and variables
+    const countdownDate = new Date("October 17, 2025 00:00:00").getTime();
+    const daysEl = document.getElementById('days');
+    const hoursEl = document.getElementById('hours');
+    const minutesEl = document.getElementById('minutes');
+    const secondsEl = document.getElementById('seconds');
+    const timelineSection = document.getElementById('timeline');
+    const hamburgerMenu = document.getElementById('hamburgerMenu');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const closeBtn = document.getElementById('closeBtn');
+
+    // Make countdownInterval a global variable so it can be cleared
+    let countdownInterval;
+
+    // Function to initialize particle background
+    function createParticles() {
+      const particlesContainer = document.getElementById('particlesContainer');
+      const particleCount = 50;
+      const colors = ['primary', 'secondary', 'tertiary'];
+      for (let i = 0; i < particleCount; i++) {
+        const particle = document.createElement('div');
+        particle.classList.add('particle', colors[Math.floor(Math.random() * colors.length)]);
+        particle.style.width = `${Math.random() * 5 + 2}px`;
+        particle.style.height = particle.style.width;
+        particle.style.top = `${Math.random() * 100}%`;
+        particle.style.left = `${Math.random() * 100}%`;
+        particle.style.animationDelay = `${Math.random() * 6}s`;
+        particlesContainer.appendChild(particle);
+      }
+    }
+    
+    // Function to remove timeline section
+    function removeTimeline() {
+        if (timelineSection) {
+            timelineSection.remove();
+        }
+        // Also remove the "Schedule" link from the navigation
+        const scheduleLink = document.querySelector('nav a[href="#timeline"]');
+        if (scheduleLink) {
+            scheduleLink.remove();
+        }
+    }
+
+    // Function to update the countdown
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const distance = countdownDate - now;
+
+      if (distance < 0) {
+        clearInterval(countdownInterval);
+        daysEl.innerHTML = "00";
+        hoursEl.innerHTML = "00";
+        minutesEl.innerHTML = "00";
+        secondsEl.innerHTML = "00";
+        return;
+      }
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      daysEl.innerHTML = days.toString().padStart(2, '0');
+      hoursEl.innerHTML = hours.toString().padStart(2, '0');
+      minutesEl.innerHTML = minutes.toString().padStart(2, '0');
+      secondsEl.innerHTML = seconds.toString().padStart(2, '0');
+    }
+
+    // Magnetic Mouse Effect
+    const mouseFollower = document.getElementById('mouseFollower');
+    document.addEventListener('mousemove', (e) => {
+      mouseFollower.style.transform = `translate(${e.clientX - 10}px, ${e.clientY - 10}px)`;
+    });
+
+    // Dynamic Background Scroll Effect
+    const dynamicBg = document.querySelector('.dynamic-bg');
+    window.addEventListener('scroll', () => {
+      const scrollY = window.scrollY;
+      const opacity = Math.min(1, scrollY / 500);
+      dynamicBg.style.background = `
+        radial-gradient(circle at ${20 + scrollY * 0.01}% ${80 - scrollY * 0.01}%, rgba(255, 51, 102, ${0.1 + opacity * 0.1}) 0%, transparent 50%),
+        radial-gradient(circle at ${80 - scrollY * 0.01}% ${20 + scrollY * 0.01}%, rgba(0, 224, 255, ${0.1 + opacity * 0.1}) 0%, transparent 50%),
+        radial-gradient(circle at 40% 40%, rgba(157, 78, 221, ${0.1 + opacity * 0.05}) 0%, transparent 50%),
+        linear-gradient(135deg, #0f2027, #203a43, #2c5364)
+      `;
+    });
+
+    // Enhanced Header Scroll Effect
+    const header = document.querySelector('header');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 100) {
+        header.style.background = 'rgba(15,32,39,0.95)';
+        header.style.boxShadow = '0 8px 32px rgba(0,0,0,0.3)';
+      } else {
+        header.style.background = 'rgba(15,32,39,0.9)';
+        header.style.boxShadow = '0 4px 20px rgba(0,0,0,0.2)';
+      }
+    });
+
+    // Smooth Scroll for Navigation Links
+    document.querySelectorAll('nav a, .mobile-menu a').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          window.scrollTo({
+            top: targetElement.offsetTop - 80, // Adjust for fixed header
+            behavior: 'smooth'
+          });
+          // Close mobile menu if it's open
+          mobileMenu.classList.remove('active');
+        }
+      });
+    });
+
+    // Loading screen and initial setup
+    window.onload = function () {
+      setTimeout(() => {
+        document.getElementById('loadingScreen').classList.add('hidden');
+        document.body.classList.remove('no-scroll');
+      }, 1000);
+      
+      // Initial calls
+      createParticles();
+      updateCountdown();
+      removeTimeline();
+
+      // Update countdown every second
+      countdownInterval = setInterval(updateCountdown, 1000);
+    };
+
+    // Flip card functionality
+    const flipCards = document.querySelectorAll('.flip-card');
+    flipCards.forEach(card => {
+      card.addEventListener('click', () => {
+        card.classList.toggle('flip');
+      });
+    });
+    
+    // Intersection Observer for scroll animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, {
+      threshold: 0.1
+    });
+
+    document.querySelectorAll('.fade-up, .fade-in, .scale-in').forEach(el => {
+      observer.observe(el);
+    });
+
+    // Mobile menu toggle
+    hamburgerMenu.addEventListener('click', () => {
+        mobileMenu.classList.add('active');
+    });
+
+    closeBtn.addEventListener('click', () => {
+        mobileMenu.classList.remove('active');
+    });
+
+  </script>
+</body>
+</html>
