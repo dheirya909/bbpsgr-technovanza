@@ -284,7 +284,6 @@
     .hero-content {
       max-width: 800px;
       z-index: 2;
-    
     }
 
     .hero-logo {
@@ -337,7 +336,6 @@
       gap: 1.5rem;
       justify-content: center;
       margin-top: 2rem;
-      
     }
 
     .hero::before {
@@ -367,13 +365,16 @@
       border: 1px solid rgba(255,255,255,0.1);
       min-width: 100px;
       text-align: center;
+      flex: 1 1 90px;
+      max-width: 120px;
     }
 
     .countdown-number {
-      font-size: clamp(1.8rem, 5vw, 2.5rem); /* Responsive font size */
+      font-size: clamp(1.6rem, 5vw, 2.5rem); /* Responsive font size */
       font-weight: 700;
       color: var(--primary);
       font-family: 'JetBrains Mono', monospace;
+      word-break: break-all;
     }
 
     .countdown-label {
@@ -384,13 +385,13 @@
 
     /* Enhanced Buttons */
     .btn {
-      padding: 18px 45px;
+      padding: 16px 32px;
       border: none;
       border-radius: 50px;
       background: linear-gradient(45deg, var(--primary), var(--secondary));
       background-size: 300% 300%;
       font-weight: 700;
-      font-size: 1.1rem;
+      font-size: 1rem;
       cursor: pointer;
       color: white;
       position: relative;
@@ -399,6 +400,8 @@
       animation: gradient-shift 3s ease infinite;
       text-decoration: none;
       display: inline-block;
+      min-width: 120px;
+      text-align: center;
     }
 
     .btn::before {
@@ -423,7 +426,7 @@
 
     /* Sections */
     section {
-      padding: 120px 20px;
+      padding: 100px 20px;
       text-align: center;
       position: relative;
     }
@@ -441,30 +444,36 @@
 
     /* Enhanced Grid */
     .brochure_button {
-      padding: 20px;
-      margin: 20px;
+      padding: 16px;
+      margin: 16px;
       background: linear-gradient(45deg, var(--primary), var(--accent));
       border-radius: 20px;
       text-decoration: none;
       font-weight: bolder;
       color: white;
+      font-size: 1rem;
+      display: inline-block;
+      min-width: 120px;
     }
 
     .card-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-      gap: 40px;
-      max-width: 1400px;
+      grid-template-columns: repeat(auto-fit, minmax(325px, 1fr));
+      gap: 32px;
+      max-width: 1200px;
       margin: auto;
-      margin-top: 100px;
-      padding: 0 20px;
+      margin-top: 60px;
+      padding: 0 8px;
     }
 
     /* Flip Cards Enhanced */
     .flip-card {
       perspective: 1000px;
       cursor: pointer;
-      height: 450px;
+      height: 420px;
+      min-height: 320px;
+      display: flex;
+      align-items: stretch;
     }
 
     .flip-card-inner {
@@ -473,6 +482,7 @@
       height: 100%;
       transition: transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
       transform-style: preserve-3d;
+      min-height: 320px;
     }
 
     .flip-card.flip .flip-card-inner {
@@ -489,7 +499,7 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      padding: 2.5rem;
+      padding: 1.2rem;
       box-sizing: border-box;
       border: 1px solid rgba(255,255,255,0.1);
     }
@@ -507,67 +517,52 @@
       box-shadow: var(--shadow);
     }
 
-    .flip-front h3 {
-      font-size: 2.2rem;
+    .flip-front h3, .flip-back h3 {
+      font-size: 1.6rem;
       font-family: 'Syne', sans-serif;
       font-weight: 700;
       color: var(--primary);
-      margin-bottom: 25px;
+      margin-bottom: 18px;
       text-shadow: 0 0 20px rgba(0,224,255,0.3);
     }
 
-    .flip-front h5 {
+    .flip-front h5, .flip-back h5 {
       font-size: 1rem;
       font-family: 'Syne', sans-serif;
       font-weight: 700;
       color: var(--primary);
-      margin-bottom: 25px;
+      margin-bottom: 15px;
       text-shadow: 0 0 20px rgba(0,224,255,0.3);
     }
 
-    .flip-front .incharge {
-      font-size: 1.3rem;
+    .flip-front .incharge, .flip-back .incharge {
+      font-size: 1.1rem;
       color: #fff;
-      margin-top: 20px;
+      margin-top: 12px;
       opacity: 0.9;
     }
 
-    .flip-back h3 {
-      font-size: 2rem;
-      font-family: 'Syne', sans-serif;
-      font-weight: 700;
-      color: var(--primary);
-      margin-bottom: 25px;
-    }
-
-    .flip-back h5 {
-      font-size: 1rem;
-      font-family: 'Syne', sans-serif;
-      font-weight: 700;
-      color: var(--primary);
-      margin-bottom: 25px;
-    }
-
     .flip-back .venue {
-      font-size: 1.2rem;
+      font-size: 1rem;
       color: var(--accent);
-      margin-bottom: 20px;
+      margin-bottom: 14px;
       font-weight: 600;
     }
 
     .flip-back .description {
-      font-size: 1.1rem;
+      font-size: 1rem;
       color: #eef;
       text-align: center;
-      line-height: 1.7;
+      line-height: 1.6;
     }
-    
+
     /* Enhanced Testimonials */
     .testimonial-card {
       font-style: italic;
       color: #cfe9ff;
       position: relative;
-      padding-top: 30px;
+      padding-top: 24px;
+      min-height: 120px;
     }
 
     .testimonial-card::before {
@@ -575,16 +570,18 @@
       position: absolute;
       top: -10px;
       left: 20px;
-      font-size: 4rem;
+      font-size: 3rem;
       color: var(--primary);
       opacity: 0.3;
     }
 
     .testimonial-author {
-      margin-top: 20px;
+      margin-top: 18px;
       font-weight: bold;
       color: var(--accent);
       font-style: normal;
+      font-size: 1rem;
+      text-align: right;
     }
 
     /* Scroll Animations */
@@ -622,17 +619,17 @@
     /* Enhanced Footer */
     footer {
       text-align: center;
-      padding: 60px 20px;
+      padding: 36px 10px;
       background: var(--footer-bg);
       backdrop-filter: blur(15px);
-      margin-top: 80px;
+      margin-top: 60px;
       border-top: 1px solid rgba(255,255,255,0.1);
     }
 
     footer img {
-      height: 60px;
-      margin-bottom: 20px;
-      filter: drop-shadow(0 0 15px rgba(0,224,255,0.4));
+      height: 48px;
+      margin-bottom: 12px;
+      filter: drop-shadow(0 0 12px rgba(0,224,255,0.4));
     }
 
     footer .logo {
@@ -641,21 +638,21 @@
       align-items: center;
     }
     .social-links {
-      margin-top: 30px;
+      margin-top: 18px;
     }
 
     .social-links a {
       color: white;
-      margin: 0 15px;
-      font-size: 1.5rem;
+      margin: 0 10px;
+      font-size: 1.3rem;
       transition: all 0.3s ease;
       display: inline-block;
     }
 
     .social-links a:hover {
       color: var(--primary);
-      transform: translateY(-3px) scale(1.2);
-      text-shadow: 0 0 15px rgba(0,224,255,0.6);
+      transform: translateY(-3px) scale(1.12);
+      text-shadow: 0 0 12px rgba(0,224,255,0.6);
     }
 
     /* Mobile Menu */
@@ -686,9 +683,9 @@
     }
 
     .mobile-menu a {
-        font-size: 2rem;
-        margin: 20px 0;
-        padding: 15px 40px;
+        font-size: 1.5rem;
+        margin: 16px 0;
+        padding: 12px 32px;
         color: white;
         text-decoration: none;
         border-bottom: 2px solid rgba(255,255,255,0.1);
@@ -701,9 +698,9 @@
 
     .close-btn {
         position: absolute;
-        top: 30px;
-        right: 30px;
-        font-size: 2rem;
+        top: 18px;
+        right: 18px;
+        font-size: 1.7rem;
         cursor: pointer;
         color: white;
         transition: transform 0.3s ease;
@@ -714,53 +711,115 @@
     }
 
     /* Responsive Design */
-    @media (max-width: 768px) {
+    @media (max-width: 900px) {
       header {
-        padding: 15px 20px;
+        padding: 12px 14px;
+      }
+      .hero-content, .card-grid, section {
+        max-width: 100vw;
+        padding-left: 4vw;
+        padding-right: 4vw;
+      }
+      section {
+        padding: 60px 5vw;
+      }
+      .card-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 20px;
+        margin-top: 40px;
+        padding: 0 4vw;
+      }
+      .flip-card {
+        height: 340px;
+        min-height: 230px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      header {
+        padding: 7px 4vw;
+      }
+      header h2 {
+        font-size: 20px;
       }
       nav {
         display: none; /* Hide desktop nav on mobile */
       }
       .hamburger-menu {
-          display: block; /* Show hamburger on mobile */
+        display: block; /* Show hamburger on mobile */
       }
       .countdown {
-        gap: 15px;
+        gap: 8px;
+        flex-wrap: wrap;
       }
       .countdown-item {
-        padding: 15px;
-        min-width: 80px;
+        padding: 8px;
+        min-width: 60px;
+        font-size: 0.9rem;
+        max-width: 80px;
       }
       .countdown-number {
-        font-size: 1.8rem;
+        font-size: 1.1rem;
       }
       .card-grid {
         grid-template-columns: 1fr;
-        gap: 30px;
+        gap: 14px;
+        margin-top: 30px;
+        padding: 0 2vw;
       }
       section {
-        padding: 80px 15px;
+        padding: 34px 2vw;
       }
       .hero-logo {
-        max-width: 90%;
+        max-width: 150px;
         height: auto;
-        margin: 20px auto;
+        margin: 10px auto;
         display: block;
       }
-
       .hero-content h1 {
-        font-size: 1.8rem;
+        font-size: 1rem;
         text-align: center;
       }
-
       .hero-content p {
-        font-size: 1rem;
+        font-size: 0.95rem;
         line-height: 1.5;
         text-align: center;
       }
       .hero-buttons {
         flex-direction: column;
-        gap: 1rem;
+        gap: 0.6rem;
+      }
+      .flip-card {
+        height: 220px;
+        min-height: 120px;
+      }
+      .flip-front, .flip-back {
+        padding: 0.7rem;
+      }
+      .testimonial-card {
+        font-size: 0.96rem;
+        padding-top: 12px;
+      }
+      .testimonial-author {
+        font-size: 0.92rem;
+      }
+      .brochure_button {
+        padding: 11px;
+        margin: 9px;
+        font-size: 0.91rem;
+        min-width: 90px;
+      }
+      footer img {
+        height: 34px;
+        margin-bottom: 7px;
+      }
+      .social-links a {
+        font-size: 1.09rem;
+        margin: 0 6px;
+      }
+      footer {
+        padding: 16px 3vw;
+        margin-top: 30px;
       }
     }
 
@@ -951,7 +1010,7 @@
 
   <!-- Testimonials -->
   <section id="testimonials">
-    <h2 class="fade-up">What people are saying</h2>
+    <h2 class="fade-up" style="margin-top: 100px;">What people are saying</h2>
     <div class="card-grid">
       <div class="glass-card testimonial-card fade-up">
         <p>"An amazing demonstration of creativity and talent. Technovanza never fails to amaze and motivate. The atmosphere was electrifying, and the events were well-planned!"</p>
@@ -973,12 +1032,12 @@
     <div class="logo">
       <img src="logo.png" alt="Technovanza Logo">
     </div>
-    <p>&copy; 2025 Technovanza 11.0. All Rights Reserved.</p>
+    <p>2025 Technovanza 11.0</p>
     <div class="social-links">
-      <a href="#"><i class="fab fa-facebook-f"></i></a>
-      <a href="#"><i class="fab fa-twitter"></i></a>
-      <a href="#"><i class="fab fa-instagram"></i></a>
-      <a href="#"><i class="fab fa-linkedin-in"></i></a>
+      <a href="https://www.facebook.com/bbpsgrh"><i class="fab fa-facebook-f"></i></a>
+      <a href="https://www.youtube.com/channel/UCW8Y6yNyPbt48jekzk493yA"><i class="fab fa-youtube"></i></a>
+      <a href="https://instagram.com/bbps.grhm?utm_medium=copy_link"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.linkedin.com/school/bal-bharati-public-school-ganga-ram-hospital-marg"><i class="fab fa-linkedin-in"></i></a>
     </div>
   </footer>
 
