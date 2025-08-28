@@ -440,12 +440,23 @@
     }
 
     /* Enhanced Grid */
+    .brochure_button {
+      padding: 20px;
+      margin: 20px;
+      background: linear-gradient(45deg, var(--primary), var(--accent));
+      border-radius: 20px;
+      text-decoration: none;
+      font-weight: bolder;
+      color: white;
+    }
+
     .card-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
       gap: 40px;
       max-width: 1400px;
-      margin: 0 auto;
+      margin: auto;
+      margin-top: 100px;
       padding: 0 20px;
     }
 
@@ -505,6 +516,15 @@
       text-shadow: 0 0 20px rgba(0,224,255,0.3);
     }
 
+    .flip-front h5 {
+      font-size: 1rem;
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 25px;
+      text-shadow: 0 0 20px rgba(0,224,255,0.3);
+    }
+
     .flip-front .incharge {
       font-size: 1.3rem;
       color: #fff;
@@ -514,6 +534,14 @@
 
     .flip-back h3 {
       font-size: 2rem;
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 25px;
+    }
+
+    .flip-back h5 {
+      font-size: 1rem;
       font-family: 'Syne', sans-serif;
       font-weight: 700;
       color: var(--primary);
@@ -824,19 +852,21 @@
   <!-- Events -->
   <section id="events">
     <h2 class="fade-up">Featured Events</h2>
+    <a href="/TECHNOVANZA 11.0.pdf" class="brochure_button" target="_blank">View Brochure</a>
+    <br>
     <div class="card-grid">
 
       <div class="flip-card fade-up">
         <div class="flip-card-inner">
           <div class="flip-front">
             <i class="fas fa-code" style="font-size: 3rem; color: var(--primary); margin-bottom: 20px;"></i>
-            <h3>Digital Skit: Internet Safety Heroes or Cyber Safety Skit Stars</h3>
+            <h5>Digital Skit: Internet Safety Heroes or Cyber Safety Skit Stars</h5>
             <div class="incharge">Incharge: </div>
           </div>
           <div class="flip-back">
-            <h3>Hackathon</h3>
-            <div class="venue"><i class="fas fa-map-marker-alt"></i> Lab Complex</div>
-            <div class="description">24 hours of coding, innovation, and problem-solving with top young developers. Build the future with cutting-edge technologies and win amazing prizes!</div>
+            <h5>Digital Skit: Internet Safety Heroes or Cyber Safety Skit Stars</h5>
+            <div class="venue"><i class="fas fa-map-marker-alt"></i> Middle Computer Lab </div>
+            <div class="description">Students present short, original skits to spread awareness on safe online habits. The event blends creativity, teamwork, and responsible digital behavior.</div>
           </div>
         </div>
       </div>
@@ -849,9 +879,9 @@
             <div class="incharge">Incharge: </div>
           </div>
           <div class="flip-back">
-            <h3>RoboWars</h3>
-            <div class="venue"><i class="fas fa-map-marker-alt"></i> Mechanical Grounds</div>
-            <div class="description">Witness powerful bots clash in an epic showdown of strength and innovation. Design, build, and battle your way to victory in the ultimate robotics competition!</div>
+            <h3>Innovision</h3>
+            <div class="venue"><i class="fas fa-map-marker-alt"></i> Primary Computer Lab</div>
+            <div class="description">Teams design digital posters on SDG goals using Adobe Express, showcasing innovative solutions for global challenges.</div>
           </div>
         </div>
       </div>
@@ -860,13 +890,13 @@
         <div class="flip-card-inner">
           <div class="flip-front">
             <i class="fas fa-brain" style="font-size: 3rem; color: var(--tertiary); margin-bottom: 20px;"></i>
-            <h3>TECH TANK TITANS: YOUNG INNOVATORS EDITION</h3>
+            <h5>TECH TANK TITANS: YOUNG INNOVATORS EDITION</h5>
             <div class="incharge">Incharge: </div>
           </div>
           <div class="flip-back">
-            <h3>Ideathon</h3>
+            <h5>TECH TANK TITANS: YOUNG INNOVATORS EDITION</h5>
             <div class="venue"><i class="fas fa-map-marker-alt"></i> Auditorium</div>
-            <div class="description">Pitch your game-changing ideas to a panel of experts. This is your chance to turn your vision into reality and get recognized for your creativity.</div>
+            <div class="description">Budding innovators pitch and prototype tech-based solutions for real-world school or community problems</div>
           </div>
         </div>
       </div>
@@ -879,9 +909,9 @@
             <div class="incharge">Incharge: </div>
           </div>
           <div class="flip-back">
-            <h3>Innovate</h3>
-            <div class="venue"><i class="fas fa-map-marker-alt"></i> Main Hall</div>
-            <div class="description">A showcase of groundbreaking projects and prototypes. Explore the future of technology and interact with the inventors shaping tomorrow.</div>
+            <h3>LENS LEGENDS</h3>
+            <div class="venue"><i class="fas fa-map-marker-alt"></i> Junior Library</div>
+            <div class="description">Participants capture and narrate a photo story on “Technology in Daily Life,” blending photography with creative storytelling.</div>
           </div>
         </div>
       </div>
@@ -894,9 +924,9 @@
             <div class="incharge">Incharge: </div>
           </div>
           <div class="flip-back">
-            <h3>Gaming Arena</h3>
-            <div class="venue"><i class="fas fa-map-marker-alt"></i> Canteen Area</div>
-            <div class="description">Compete in high-stakes esports tournaments and casual gaming sessions. Show off your skills and become the ultimate champion.</div>
+            <h3>CodeRush</h3>
+            <div class="venue"><i class="fas fa-map-marker-alt"></i> Senior Library</div>
+            <div class="description">Teams develop original web-based projects within a set timeframe, showcasing functionality, design, and technical expertise.</div>
           </div>
         </div>
       </div>
@@ -909,9 +939,9 @@
             <div class="incharge">Incharge: </div>
           </div>
           <div class="flip-back">
-            <h3>Sci-Fi Expo</h3>
-            <div class="venue"><i class="fas fa-map-marker-alt"></i> Library Courtyard</div>
-            <div class="description">Step into a world of imagination with our science fiction exhibition. Discover stunning art, futuristic gadgets, and fan-favorite universes.</div>
+            <h3>MISSION OMEGA</h3>
+            <div class="venue"><i class="fas fa-map-marker-alt"></i> Senior Computer Lab</div>
+            <div class="description">A cryptic hunt where teams act as IMF agents, solving puzzles and cyber challenges to stop a rogue AI threat.</div>
           </div>
         </div>
       </div>
@@ -924,16 +954,16 @@
     <h2 class="fade-up">What people are saying</h2>
     <div class="card-grid">
       <div class="glass-card testimonial-card fade-up">
-        <p>"An incredible display of talent and innovation. Technovanza always manages to surprise and inspire. The events were well-organized and the atmosphere was electric!"</p>
-        <div class="testimonial-author">- Alex Johnson, Class of '22</div>
+        <p>"An amazing demonstration of creativity and talent. Technovanza never fails to amaze and motivate. The atmosphere was electrifying, and the events were well-planned!"</p>
+        <div class="testimonial-author">- Aarav Parashar, Head Boy</div>
       </div>
       <div class="glass-card testimonial-card fade-up">
-        <p>"From the thrilling RoboWars to the insightful Ideathon, every event was top-notch. It's a must-attend for anyone passionate about technology and the future."</p>
-        <div class="testimonial-author">- Jamie Lee, Tech Enthusiast</div>
+        <p>"Technovanza 10.0 was a venue where creativity and innovation really came together. It was an unforgettable event because of the participants' passion, cooperation, and inventiveness."</p>
+        <div class="testimonial-author">- Dheirya Kharbanda, IT Head</div>
       </div>
       <div class="glass-card testimonial-card fade-up">
-        <p>"The level of creativity was mind-blowing! I learned so much and met so many amazing people. Can't wait for the next one!"</p>
-        <div class="testimonial-author">- Chris Miller, Aspiring Developer</div>
+        <p>"Technovanza 10.0 was a remarkable celebration of innovation and creativity, empowering students to showcase their talent and passion for technology."</p>
+        <div class="testimonial-author">- Khushi Arora, IT Head</div>
       </div>
     </div>
   </section>
