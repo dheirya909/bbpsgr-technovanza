@@ -6,7 +6,9 @@
   <title>Technovanza 11.0 | Experience the Future</title>
   <link rel="shortcut icon" href="logo.png" type="image/x-icon">
   <!-- Modern Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Syne:wght@400;600;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&display=swap" rel="stylesheet">
 
   <!-- Font Awesome for Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -40,7 +42,7 @@
     }
 
     body {
-      font-family: 'Space Grotesk', sans-serif;
+      font-family: merriweather, serif;
       color: #FFFFFF;
       min-height: 100vh;
       overflow-x: hidden;
@@ -159,7 +161,7 @@
     .typewriter {
       overflow: hidden;
       border-right: none !important;
-      animation: typewriter 7s steps(40, end);
+      animation: typewriter 7s steps(1000, end);
       white-space: nowrap;
       margin: 0 auto;
       letter-spacing: 0.1em;
@@ -234,6 +236,7 @@
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
+      font-family: merriweather, serif;
     }
 
     nav {
@@ -295,7 +298,7 @@
     .hero h1 {
       font-size: clamp(2rem, 3vw, 4rem);
       margin-bottom: 20px;
-      font-family: 'Syne', sans-serif;
+      font-family: merriweather, serif;
       font-weight: 800;
       background: linear-gradient(45deg, var(--primary), var(--secondary), var(--tertiary));
       background-size: 300% 300%;
@@ -490,7 +493,8 @@
       align-items: center;
       padding: 1.2rem;
       box-sizing: border-box;
-      border: 1px solid rgba(255,255,255,0.1);
+      border: #00e0ff solid 3px;
+      
     }
 
     .flip-front {
@@ -507,20 +511,11 @@
     }
 
     .flip-front h3, .flip-back h3 {
-      font-size: 1.6rem;
+      font-size: 2.6rem;
       font-family: 'Syne', sans-serif;
       font-weight: 700;
       color: var(--primary);
       margin-bottom: 18px;
-      text-shadow: 0 0 20px rgba(0,224,255,0.3);
-    }
-
-    .flip-front h5, .flip-back h5 {
-      font-size: 1rem;
-      font-family: 'Syne', sans-serif;
-      font-weight: 700;
-      color: var(--primary);
-      margin-bottom: 15px;
       text-shadow: 0 0 20px rgba(0,224,255,0.3);
     }
 
@@ -543,34 +538,6 @@
       color: #eef;
       text-align: center;
       line-height: 1.6;
-    }
-
-    /* Enhanced Testimonials */
-    .testimonial-card {
-      font-style: italic;
-      color: #cfe9ff;
-      position: relative;
-      padding-top: 24px;
-      min-height: 120px;
-    }
-
-    .testimonial-card::before {
-      content: '"';
-      position: absolute;
-      top: -10px;
-      left: 20px;
-      font-size: 3rem;
-      color: var(--primary);
-      opacity: 0.3;
-    }
-
-    .testimonial-author {
-      margin-top: 18px;
-      font-weight: bold;
-      color: var(--accent);
-      font-style: normal;
-      font-size: 1rem;
-      text-align: right;
     }
 
     /* Scroll Animations */
@@ -759,8 +726,8 @@
       }
       .card-grid {
         grid-template-columns: 1fr;
-        gap: 14px;
-        margin-top: 30px;
+        gap: 120px;
+        margin-top: 100px;
         padding: 0 2vw;
       }
       section {
@@ -791,6 +758,9 @@
       }
       .flip-front, .flip-back {
         padding: 0.7rem;
+      }
+      .flip-front, .flip-back  h3{
+        font-size: 1rem;
       }
       .testimonial-card {
         font-size: 0.96rem;
@@ -853,7 +823,6 @@
     <nav id="desktop-nav">
       <a href="#hero">Home</a>
       <a href="#events">Events</a>
-      <a href="#testimonials">Reviews</a>
     </nav>
     <!-- Hamburger menu icon for mobile -->
     <div class="hamburger-menu" id="hamburgerMenu">
@@ -866,7 +835,6 @@
       <div class="close-btn" id="closeBtn"><i class="fas fa-times"></i></div>
       <a href="#hero">Home</a>
       <a href="#events">Events</a>
-      <a href="#testimonials">Reviews</a>
   </div>
 
   <!-- Hero -->
@@ -898,7 +866,7 @@
         </div>
         <div class="hero-buttons">
           <a href="#events" class="btn">Explore Events</a>
-          <a href="#register" class="btn">Register Now</a>
+          <a href="https://forms.gle/dE2ahDwYMGW915i39" class="btn">Register Now</a>
         </div>
       </div>
     </div>
@@ -914,13 +882,14 @@
       <div class="flip-card fade-up">
         <div class="flip-card-inner">
           <div class="flip-front">
-            <h5>Digital Skit: Internet Safety Heroes or Cyber Safety Skit Stars</h5>
+            <h3>Digital Skit</h3>
             <div class="incharge">Incharge: </div>
           </div>
           <div class="flip-back">
-            <h5>Digital Skit: Internet Safety Heroes or Cyber Safety Skit Stars</h5>
+            <h3>Digital Skit</h3>
             <div class="venue"><i class="fas fa-map-marker-alt"></i> Middle Computer Lab </div>
-            <div class="description">Students present short, original skits to spread awareness on safe online habits. The event blends creativity, teamwork, and responsible digital behavior.</div>
+            <div class="description">Students perform short skits to promote safe online habits through creativity and teamwork.</div>
+              <a href="/event1.pdf" class="brochure_button" target="_blank">View Brochure</a>
           </div>
         </div>
       </div>
@@ -929,12 +898,13 @@
         <div class="flip-card-inner">
           <div class="flip-front">
             <h3>Innovision</h3>
-            <div class="incharge">Incharge: </div>
+            <div class="incharge">Incharge: Ms. Sugeet</div>
           </div>
           <div class="flip-back">
             <h3>Innovision</h3>
             <div class="venue"><i class="fas fa-map-marker-alt"></i> Primary Computer Lab</div>
-            <div class="description">Teams design digital posters on SDG goals using Adobe Express, showcasing innovative solutions for global challenges.</div>
+            <div class="description">Teams create digital posters on SDGs with Adobe Express, highlighting innovative global solutions.</div>
+              <a href="/event2.pdf" class="brochure_button" target="_blank">View Brochure</a>
           </div>
         </div>
       </div>
@@ -942,13 +912,14 @@
       <div class="flip-card fade-up">
         <div class="flip-card-inner">
           <div class="flip-front">
-            <h5>TECH TANK TITANS: YOUNG INNOVATORS EDITION</h5>
-            <div class="incharge">Incharge: </div>
+            <h3>TECH TANK TITANS</h3>
+            <div class="incharge">Incharge: Ms. Bhawna Garg</div>
           </div>
           <div class="flip-back">
-            <h5>TECH TANK TITANS: YOUNG INNOVATORS EDITION</h5>
+            <h3>TECH TANK TITANS</h3>
             <div class="venue"><i class="fas fa-map-marker-alt"></i> Auditorium</div>
-            <div class="description">Budding innovators pitch and prototype tech-based solutions for real-world school or community problems</div>
+            <div class="description">Young innovators pitch and prototype tech solutions for school or community problems.</div>
+              <a href="/event3.pdf" class="brochure_button" target="_blank">View Brochure</a>
           </div>
         </div>
       </div>
@@ -957,63 +928,49 @@
         <div class="flip-card-inner">
           <div class="flip-front">
             <h3>LENS LEGENDS</h3>
-            <div class="incharge">Incharge: </div>
+            <div class="incharge">Incharge: Mr. AVL Raghevendra</div>
           </div>
           <div class="flip-back">
             <h3>LENS LEGENDS</h3>
             <div class="venue"><i class="fas fa-map-marker-alt"></i> Junior Library</div>
             <div class="description">Participants capture and narrate a photo story on “Technology in Daily Life,” blending photography with creative storytelling.</div>
+              <a href="/event4.pdf" class="brochure_button" target="_blank">View Brochure</a>
           </div>
         </div>
       </div>
 
       <div class="flip-card fade-up">
+              <div class="flip-card-inner">
+                <div class="flip-front">
+                  <h3>MISSION OMEGA</h3>
+                  <div class="incharge">Incharge: Ms. Shilpi Chauhan</div>
+                </div>
+                <div class="flip-back">
+                  <h3>MISSION OMEGA</h3>
+                  <div class="venue"><i class="fas fa-map-marker-alt"></i> Senior Computer Lab</div>
+                  <div class="description">A cryptic hunt where teams act as IMF agents, solving puzzles and cyber challenges to stop a rogue AI threat.</div>
+                    <a href="/event5.pdf" class="brochure_button" target="_blank">View Brochure</a>
+                </div>
+              </div>
+            </div>
+
+      <div class="flip-card fade-up" style="margin-bottom: 100px;">
         <div class="flip-card-inner">
           <div class="flip-front">
             <h3>CodeRush</h3>
-            <div class="incharge">Incharge: </div>
+            <div class="incharge">Incharge: Ms. Ruchi Gupta</div>
           </div>
           <div class="flip-back">
             <h3>CodeRush</h3>
             <div class="venue"><i class="fas fa-map-marker-alt"></i> Senior Library</div>
             <div class="description">Teams develop original web-based projects within a set timeframe, showcasing functionality, design, and technical expertise.</div>
+              <a href="/event6.pdf" class="brochure_button" target="_blank">View Brochure</a>
           </div>
         </div>
       </div>
 
-      <div class="flip-card fade-up">
-        <div class="flip-card-inner">
-          <div class="flip-front">
-            <h3>MISSION OMEGA</h3>
-            <div class="incharge">Incharge: </div>
-          </div>
-          <div class="flip-back">
-            <h3>MISSION OMEGA</h3>
-            <div class="venue"><i class="fas fa-map-marker-alt"></i> Senior Computer Lab</div>
-            <div class="description">A cryptic hunt where teams act as IMF agents, solving puzzles and cyber challenges to stop a rogue AI threat.</div>
-          </div>
-        </div>
-      </div>
+      
 
-    </div>
-  </section>
-
-  <!-- Testimonials -->
-  <section id="testimonials">
-    <h2 class="fade-up" style="margin-top: 100px;">What people are saying</h2>
-    <div class="card-grid">
-      <div class="glass-card testimonial-card fade-up">
-        <p>"An amazing demonstration of creativity and talent. Technovanza never fails to amaze and motivate. The atmosphere was electrifying, and the events were well-planned!"</p>
-        <div class="testimonial-author">- Aarav Parashar, Head Boy</div>
-      </div>
-      <div class="glass-card testimonial-card fade-up">
-        <p>"Technovanza 10.0 was a venue where creativity and innovation really came together. It was an unforgettable event because of the participants' passion, cooperation, and inventiveness."</p>
-        <div class="testimonial-author">- Dheirya Kharbanda, IT Head</div>
-      </div>
-      <div class="glass-card testimonial-card fade-up">
-        <p>"Technovanza 10.0 was a remarkable celebration of innovation and creativity, empowering students to showcase their talent and passion for technology."</p>
-        <div class="testimonial-author">- Khushi Arora, IT Head</div>
-      </div>
     </div>
   </section>
 
@@ -1023,6 +980,8 @@
       <img src="logo.png" alt="Technovanza Logo">
     </div>
     <p>2025 Technovanza 11.0</p>
+    <br>
+    <p style="font-size: 2rem;">THANK YOU!</p>
     <div class="social-links">
       <a href="https://www.facebook.com/bbpsgrh"><i class="fab fa-facebook-f"></i></a>
       <a href="https://www.youtube.com/channel/UCW8Y6yNyPbt48jekzk493yA"><i class="fab fa-youtube"></i></a>
