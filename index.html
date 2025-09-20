@@ -788,9 +788,102 @@
     .card-grid > *:nth-child(4) { transition-delay: 0.4s; }
     .card-grid > *:nth-child(5) { transition-delay: 0.5s; }
     .card-grid > *:nth-child(6) { transition-delay: 0.6s; }
+    
+    /* Event icon styles */
+    .flip-front h3, .flip-back h3 {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+    }
+    .event-icon {
+      width: 1.15em;
+      height: 1.15em;
+      color: var(--primary);
+      filter: drop-shadow(0 0 8px rgba(0,224,255,0.45));
+      transition: transform 0.3s ease, filter 0.3s ease;
+      flex-shrink: 0;
+    }
+    .flip-card:hover .event-icon { transform: translateY(-2px) scale(1.06); }
+
+    /* Icon animations */
+    @keyframes iconPulse { 0%,100% { transform: scale(1); } 50% { transform: scale(1.08); } }
+    @keyframes iconSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+    @keyframes iconGlow { 0%,100% { filter: drop-shadow(0 0 4px rgba(0,224,255,0.3)); } 50% { filter: drop-shadow(0 0 14px rgba(0,224,255,0.7)); } }
+    @keyframes iconBob { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-3px); } }
+    @keyframes iconWiggle { 0%,100% { transform: rotate(0deg); } 20% { transform: rotate(-4deg);} 40% { transform: rotate(3deg);} 60% { transform: rotate(-2deg);} 80% { transform: rotate(2deg);} }
+
+    .pulse { animation: iconPulse 2.2s ease-in-out infinite; }
+    .spin-slow { animation: iconSpin 12s linear infinite; }
+    .glow { animation: iconGlow 2.6s ease-in-out infinite; }
+    .bob { animation: iconBob 2.4s ease-in-out infinite; }
+    .wiggle-slow { animation: iconWiggle 2.8s ease-in-out infinite; }
+    
   </style>
 </head>
 <body>
+  <!-- SVG Sprite: Animated Event Icons -->
+  <svg xmlns="http://www.w3.org/2000/svg" style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true" focusable="false">
+    <defs>
+      <!-- Play/Circle: Digital Skit -->
+      <symbol id="icon-play" viewBox="0 0 24 24">
+        <g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="9"/>
+        </g>
+        <polygon points="10,8 16,12 10,16" fill="currentColor"/>
+      </symbol>
+      <!-- Lightbulb: Innovision -->
+      <symbol id="icon-bulb" viewBox="0 0 24 24">
+        <g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M9 18h6"/>
+          <path d="M10 22h4"/>
+          <path d="M12 3a7 7 0 0 0-5 11c.9 1 .9 2 1 2h8c.1 0 .1-1 1-2A7 7 0 0 0 12 3z"/>
+        </g>
+      </symbol>
+      <!-- Target: Tech Tank Titans -->
+      <symbol id="icon-target" viewBox="0 0 24 24">
+        <g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="8"/>
+          <circle cx="12" cy="12" r="4"/>
+          <path d="M12 2v3M22 12h-3M12 22v-3M2 12h3"/>
+        </g>
+      </symbol>
+      <!-- Camera: Lens Legends -->
+      <symbol id="icon-camera" viewBox="0 0 24 24">
+        <g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="7" width="18" height="12" rx="2" ry="2"/>
+          <circle cx="12" cy="13" r="4"/>
+          <rect x="8" y="4" width="5" height="3" rx="1"/>
+        </g>
+      </symbol>
+      <!-- Shield: Mission Omega -->
+      <symbol id="icon-shield" viewBox="0 0 24 24">
+        <path d="M12 2l7 3v5c0 5-3.2 9.2-7 12-3.8-2.8-7-7-7-12V5l7-3z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+      </symbol>
+      <!-- Code: CodeRush -->
+      <symbol id="icon-code" viewBox="0 0 24 24">
+        <g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M8 9l-4 3 4 3"/>
+          <path d="M16 9l4 3-4 3"/>
+          <path d="M14 5l-4 14"/>
+        </g>
+      </symbol>
+      <!-- Grid: Kuriovation -->
+      <symbol id="icon-grid" viewBox="0 0 24 24">
+        <g fill="currentColor" stroke="none">
+          <rect x="4" y="4" width="4" height="4" rx="1"/>
+          <rect x="10" y="4" width="4" height="4" rx="1"/>
+          <rect x="16" y="4" width="4" height="4" rx="1"/>
+          <rect x="4" y="10" width="4" height="4" rx="1"/>
+          <rect x="10" y="10" width="4" height="4" rx="1"/>
+          <rect x="16" y="10" width="4" height="4" rx="1"/>
+          <rect x="4" y="16" width="4" height="4" rx="1"/>
+          <rect x="10" y="16" width="4" height="4" rx="1"/>
+          <rect x="16" y="16" width="4" height="4" rx="1"/>
+        </g>
+      </symbol>
+    </defs>
+  </svg>
 
   <!-- Loading Screen -->
   <div class="loading-screen" id="loadingScreen">
@@ -875,12 +968,13 @@
       <div class="flip-card fade-up" style="margin-bottom: 150px;">
         <div class="flip-card-inner">
           <div class="flip-front">
-            <h3>Online Safety Avengers</h3>
+            <h3>Digital Skit</h3>
             <div class="incharge">Incharge: Ms. Deepanshi Sharma</div>
+            <div class="incharge">Incharge: Ms. Megha Arora</div>
             <p style="margin: 20px; font-family: merriweather, serif; color: rgba(128, 128, 128, 0.788);">Click here!</p>
           </div>
           <div class="flip-back">
-            <h3>Online Safety Avengers</h3>
+            <h3>Digital Skit</h3>
             <div class="venue"><i class="fas fa-map-marker-alt"></i> Middle Computer Lab </div>
             <div class="description">Students perform short skits to promote safe online habits through creativity and teamwork.</div>
               <a href="/event1.pdf" class="brochure_button" target="_blank">View Brochure</a>
@@ -891,12 +985,12 @@
       <div class="flip-card fade-up" style="margin-bottom: 150px;">
         <div class="flip-card-inner">
           <div class="flip-front">
-            <h3>Innovision</h3>
+            <h3><svg class="event-icon glow" role="img" aria-hidden="true"><use href="#icon-bulb"/></svg> Innovision</h3>
             <div class="incharge">Incharge: Ms. Sugeet Malhotra</div>
             <p style="margin: 20px; font-family: merriweather, serif; color: rgba(128, 128, 128, 0.788);">Click here!</p>
           </div>
           <div class="flip-back">
-            <h3>Innovision</h3>
+            <h3><svg class="event-icon glow" role="img" aria-hidden="true"><use href="#icon-bulb"/></svg> Innovision</h3>
             <div class="venue"><i class="fas fa-map-marker-alt"></i> Primary Computer Lab</div>
             <div class="description">Teams create digital posters on SDGs with Adobe Express, highlighting innovative global solutions.</div>
               <a href="/event2.pdf" class="brochure_button" target="_blank">View Brochure</a>
@@ -907,12 +1001,12 @@
       <div class="flip-card fade-up" style="margin-bottom: 150px;">
         <div class="flip-card-inner">
           <div class="flip-front">
-            <h3>TECH TANK TITANS</h3>
+            <h3><svg class="event-icon bob" role="img" aria-hidden="true"><use href="#icon-target"/></svg> TECH TANK TITANS</h3>
             <div class="incharge">Incharge: Ms. Bhawna Garg</div>
             <p style="margin: 20px; font-family: merriweather, serif; color: rgba(128, 128, 128, 0.788);">Click here!</p>
           </div>
           <div class="flip-back">
-            <h3>TECH TANK TITANS</h3>
+            <h3><svg class="event-icon bob" role="img" aria-hidden="true"><use href="#icon-target"/></svg> TECH TANK TITANS</h3>
             <div class="venue"><i class="fas fa-map-marker-alt"></i> Auditorium</div>
             <div class="description">Young innovators pitch and prototype tech solutions for school or community problems.</div>
               <a href="/event3.pdf" class="brochure_button" target="_blank">View Brochure</a>
@@ -923,12 +1017,12 @@
       <div class="flip-card fade-up" style="margin-bottom: 150px;">
         <div class="flip-card-inner">
           <div class="flip-front">
-            <h3>LENS LEGENDS</h3>
+            <h3><svg class="event-icon spin-slow" role="img" aria-hidden="true"><use href="#icon-camera"/></svg> LENS LEGENDS</h3>
             <div class="incharge">Incharge: Mr. AVL Raghevendra</div>
             <p style="margin: 20px; font-family: merriweather, serif; color: rgba(128, 128, 128, 0.788);">Click here!</p>
           </div>
           <div class="flip-back">
-            <h3>LENS LEGENDS</h3>
+            <h3><svg class="event-icon spin-slow" role="img" aria-hidden="true"><use href="#icon-camera"/></svg> LENS LEGENDS</h3>
             <div class="venue"><i class="fas fa-map-marker-alt"></i> Junior Library</div>
             <div class="description">Participants capture and narrate a photo story on “Technology in Daily Life,” blending photography with creative storytelling.</div>
               <a href="/event4.pdf" class="brochure_button" target="_blank">View Brochure</a>
@@ -936,8 +1030,8 @@
         </div>
       </div>
 
-      <div class="flip-card fade-up" style="margin-bottom: 150px;">
-              <div class="flip-card-inner">
+      <div class="flip-card fade-up">
+              <div class="flip-card-inner" style="margin-bottom: 100px;">
                 <div class="flip-front">
                   <h3>MISSION OMEGA</h3>
                   <div class="incharge">Incharge: Ms. Shilpi Chauhan</div>
@@ -952,15 +1046,15 @@
               </div>
             </div>
 
-      <div class="flip-card fade-up" style="margin-bottom: 150px;">
+      <div class="flip-card fade-up" style="margin-bottom: 100px;">
         <div class="flip-card-inner">
           <div class="flip-front">
-            <h3>CodeRush</h3>
+            <h3><svg class="event-icon wiggle-slow" role="img" aria-hidden="true"><use href="#icon-code"/></svg> CodeRush</h3>
             <div class="incharge">Incharge: Ms. Ruchi Gupta</div>
             <p style="margin: 20px; font-family: merriweather, serif; color: rgba(128, 128, 128, 0.788);">Click here!</p>
           </div>
           <div class="flip-back">
-            <h3>CodeRush</h3>
+            <h3><svg class="event-icon wiggle-slow" role="img" aria-hidden="true"><use href="#icon-code"/></svg> CodeRush</h3>
             <div class="venue"><i class="fas fa-map-marker-alt"></i> Senior Library</div>
             <div class="description">Teams develop original web-based projects within a set timeframe, showcasing functionality, design, and technical expertise.</div>
               <a href="/event6.pdf" class="brochure_button" target="_blank">View Brochure</a>
@@ -968,15 +1062,15 @@
         </div>
       </div>
 
-      <div class="flip-card fade-up" style="margin-bottom: 150px;">
+      <div class="flip-card fade-up" style="margin-bottom: 100px;">
         <div class="flip-card-inner">
           <div class="flip-front">
-            <h3>Kuriovation</h3>
+            <h3><svg class="event-icon glow" role="img" aria-hidden="true"><use href="#icon-grid"/></svg> Kuriovation</h3>
             <div class="incharge">Incharge: Ms. Archana Bindal</div>
             <p style="margin: 20px; font-family: merriweather, serif; color: rgba(128, 128, 128, 0.788);">Click here!</p>
           </div>
           <div class="flip-back">
-            <h3>Kuriovation</h3>
+            <h3>Kuriovation/h3>
             <div class="venue"><i class="fas fa-map-marker-alt"></i>ATL Lab</div>
             <div class="description">An innovative LED Matrix Maker Challenge where students design, build, and present creative tech-driven projects.</div>
               <a href="/event7.pdf" class="brochure_button" target="_blank">View Brochure</a>
@@ -997,7 +1091,6 @@
     <p>2025 Technovanza 11.0</p>
     <br>
     <p style="font-size: 2rem;">THANK YOU!</p>
-    <p style="margin: 20px; font-family: merriweather, serif; color: rgba(128, 128, 128, 0.199);">Made by Dheirya Kharbanda</p>
     <div class="social-links">
       <a href="https://www.facebook.com/bbpsgrh"><i class="fab fa-facebook-f"></i></a>
       <a href="https://www.youtube.com/channel/UCW8Y6yNyPbt48jekzk493yA"><i class="fab fa-youtube"></i></a>
